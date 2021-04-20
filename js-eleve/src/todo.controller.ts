@@ -32,7 +32,6 @@ export class TodoController {
 
     async getFilteredTodos() {
         const todos = await this.service.getTodos();
-
         if (this.filter === FILTER.ALL) {
             return todos;
         }

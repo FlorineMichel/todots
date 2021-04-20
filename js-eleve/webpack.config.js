@@ -5,7 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: { main: './src/index.ts' },
-
+  optimization: {
+    minimize: false,
+  },
   module: {
     rules: [
       // Loader pour les fichier javascript

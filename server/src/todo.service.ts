@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, QueryOptions} from 'mongoose';
 import CreateTodoDto from './CreateTodoDto.interface';
 import { Todo, TodoDocument } from './todo.schema';
 
 @Injectable()
-export class AppService {
+export class TodoService {
   constructor(@InjectModel(Todo.name) private todoModel: Model<TodoDocument>) {}
 
   async addTodo(createTodoDto: CreateTodoDto): Promise<Todo> {
@@ -18,6 +18,19 @@ export class AppService {
   }
 
   async deleteById(id: string): Promise<void> {
-    this.todoModel.deleteOne({_id: id});
+     this.todoModel.deleteOne({_id: id}).exec();
+  }
+
+  async deleteAll(): Promise<void> {
+     this.todoModel.deleteMany({}).exec();
+  }
+
+  async deleteCompleted(): Promise<void> {
+    this.todoModel.deleteMany({state: "completed"}).exec();
+  }
+
+  async toggleTodo(id: string): Promise<Todo>{
+    const todo = await this.todoModel.findOne({_id: id});
+    return  todo.update({state: todo.state === "pending" ? "completed" : "pending"});
   }
 }

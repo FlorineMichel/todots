@@ -1,12 +1,12 @@
 import { Todo } from "./models/todo";
 import { Id } from "./models/types";
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://localhost:3000';
 
 export interface TodoDTO {
     _id: Id;
     name: string;
-    state: "DONE" | "PENDING";
+    state: "completed" | "pending";
 }
 
 /**
@@ -18,7 +18,7 @@ function todoFromDTO(dto: TodoDTO): Todo {
     return ({
         id: dto._id,
         name: dto.name,
-        completed: dto.state === 'DONE'
+        completed: dto.state === 'completed'
     });
 }
 

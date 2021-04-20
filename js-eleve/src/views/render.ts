@@ -21,7 +21,7 @@ export async function render() {
     // Clean the list
     list.innerHTML = '';
     // Affichage des todos
-    todoEls.forEach(list.appendChild);
+    todoEls.forEach((c) => list.appendChild(c));
     // Affichage du compte
     count.innerHTML = `${todoEls.length} items ${controller.getFilter() === FILTER.COMPLETED ? 'completed' : 'left'}`;
 }
