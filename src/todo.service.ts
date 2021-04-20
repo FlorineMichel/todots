@@ -1,7 +1,7 @@
 import { Todo } from "./models/todo";
 import { Id } from "./models/types";
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://app-2e02f2e5-c07a-474d-8ff8-d6faccadf007.cleverapps.io';
 
 export interface TodoDTO {
     _id: Id;
