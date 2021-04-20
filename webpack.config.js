@@ -46,6 +46,7 @@ module.exports = {
   devServer: {
     open: true,
     contentBase: path.join(__dirname, 'dist'),
-    host: 'localhost'
+    host: '0.0.0.0:8080',
+    public: 'app-68f0b59e-751b-430c-951d-52f11f7ac0f3.cleverapps.io'
   }
 }
